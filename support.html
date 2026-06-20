@@ -1,0 +1,243 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>HOTWIRE+ | Help & Support Center</title>
+  <link rel="stylesheet" href="style.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <style>
+    /* Accordion FAQ styles */
+    .faq-container {
+      margin-top: 20px;
+    }
+    .faq-item {
+      background: white;
+      border: 1px solid var(--border-light);
+      border-radius: var(--radius-sm);
+      margin-bottom: 12px;
+      overflow: hidden;
+      transition: all var(--transition-fast);
+    }
+    .faq-header {
+      padding: 18px 24px;
+      font-weight: 700;
+      color: var(--text-dark);
+      cursor: pointer;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      user-select: none;
+    }
+    .faq-header:hover {
+      background: var(--bg-light);
+    }
+    .faq-body {
+      padding: 0 24px;
+      max-height: 0;
+      overflow: hidden;
+      transition: max-height 0.3s ease-out, padding 0.3s ease-out;
+      font-size: 14.5px;
+      color: var(--text-muted);
+      line-height: 1.6;
+    }
+    .faq-item.active {
+      border-color: var(--primary-color);
+    }
+    .faq-item.active .faq-body {
+      padding: 0 24px 20px 24px;
+      max-height: 200px;
+    }
+    .faq-item.active .faq-icon {
+      transform: rotate(180deg);
+      color: var(--primary-color);
+    }
+    .faq-icon {
+      transition: transform var(--transition-fast);
+      color: var(--text-muted);
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Premium Navigation Header -->
+  <header class="premium-header">
+    <div class="container nav-container">
+      <a href="index.html" class="logo" id="header-logo">
+        <div class="logo-flame">
+          <i class="fa-solid fa-fire"></i>
+        </div>
+        HOTWIRE<span class="logo-plus">+</span>
+      </a>
+      
+      <ul class="nav-menu">
+        <li><a href="index.html" class="nav-link" id="nav-link-hotels">Hotels</a></li>
+        <li><a href="index.html?tab=cars" class="nav-link" id="nav-link-cars">Cars</a></li>
+        <li><a href="results.html" class="nav-link" id="nav-link-packages">Packages</a></li>
+        <li><a href="results.html" class="nav-link" id="nav-link-decks">Decks</a></li>
+        <li><a href="results.html" class="nav-link" id="nav-link-deals">Deals</a></li>
+        <li><a href="support.html" class="nav-link active" id="nav-link-support">Support</a></li>
+      </ul>
+
+      <div class="nav-actions">
+        <a href="login.html" class="btn btn-outline" id="btn-login">Log In</a>
+        <a href="login.html" class="btn btn-primary" id="btn-signup">Sign Up</a>
+      </div>
+    </div>
+  </header>
+
+  <!-- Support Header Banner -->
+  <section class="hero-section" style="padding: 60px 0 80px 0;">
+    <div class="container">
+      <h1 class="hero-title" style="font-size: 38px;">How Can We Help You?</h1>
+      <div style="max-width: 500px; margin: 0 auto; position:relative;">
+        <input type="text" class="form-control" style="border-radius: 30px; padding: 14px 20px 14px 48px; border:none; box-shadow:var(--shadow-md); font-size:15px;" placeholder="Search support articles, terms, policies...">
+        <i class="fa-solid fa-magnifying-glass" style="position:absolute; left:20px; top:50%; transform:translateY(-50%); color:var(--text-muted);"></i>
+      </div>
+    </div>
+  </section>
+
+  <!-- Support Body Grid -->
+  <div class="container" style="margin-top: -30px; position:relative; z-index:5;">
+    <!-- Category Cards -->
+    <div class="cards-grid" style="grid-template-columns: repeat(3, 1fr); gap: 24px; margin-bottom: 50px;">
+      <div class="form-card text-center" style="margin-bottom:0; cursor:pointer; transition:all 0.3s;" onclick="alert('Redirecting to Reservations help panel...')">
+        <i class="fa-solid fa-suitcase" style="font-size:32px; color:var(--primary-color); margin-bottom:16px;"></i>
+        <h3 style="font-size:16px; font-weight:800; margin-bottom:8px;">Manage Reservations</h3>
+        <p style="color:var(--text-muted); font-size:13px;">View details, add flight numbers, or check status.</p>
+      </div>
+
+      <div class="form-card text-center" style="margin-bottom:0; cursor:pointer; transition:all 0.3s;" onclick="alert('Redirecting to Cancellations help panel...')">
+        <i class="fa-solid fa-rectangle-xmark" style="font-size:32px; color:var(--primary-color); margin-bottom:16px;"></i>
+        <h3 style="font-size:16px; font-weight:800; margin-bottom:8px;">Refunds & Cancellations</h3>
+        <p style="color:var(--text-muted); font-size:13px;">Check credit refunds, cancellation terms, and fees.</p>
+      </div>
+
+      <div class="form-card text-center" style="margin-bottom:0; cursor:pointer; transition:all 0.3s;" onclick="alert('Opening Hot Rates explanatory guide...')">
+        <i class="fa-solid fa-bolt" style="font-size:32px; color:var(--primary-color); margin-bottom:16px;"></i>
+        <h3 style="font-size:16px; font-weight:800; margin-bottom:8px;">Hot Rates Guide</h3>
+        <p style="color:var(--text-muted); font-size:13px;">Understand why secret rates save up to 60% on stays.</p>
+      </div>
+    </div>
+
+    <!-- Details Grid -->
+    <div class="details-layout" style="grid-template-columns: 1.5fr 1fr; gap: 40px; padding-bottom: 80px;">
+      <!-- FAQs section -->
+      <div>
+        <h2 style="font-size:24px; font-weight:800; margin-bottom:20px; color:var(--text-dark);"><i class="fa-solid fa-circle-question" style="color:var(--primary-color);"></i> Frequently Asked Questions</h2>
+        
+        <div class="faq-container">
+          <div class="faq-item">
+            <div class="faq-header" onclick="toggleFaq(this)">
+              <span>What is a Hotwire Hot Rate deal?</span>
+              <i class="fa-solid fa-chevron-down faq-icon"></i>
+            </div>
+            <div class="faq-body">
+              Hot Rate deals are special deep-discount offers where the exact brand name of the hotel or car rental company is kept secret until the booking is paid and confirmed. This allows luxury brands to sell extra inventory without diluting their standard pricing.
+            </div>
+          </div>
+
+          <div class="faq-item">
+            <div class="faq-header" onclick="toggleFaq(this)">
+              <span>Can I cancel or change a Hot Rate booking?</span>
+              <i class="fa-solid fa-chevron-down faq-icon"></i>
+            </div>
+            <div class="faq-body">
+              To offer such massive discounts (up to 60% off standard rates), Hot Rate hotel bookings and car rentals are non-refundable, non-changeable, non-transferable, and non-cancelable. Please double-check your check-in dates and location before paying.
+            </div>
+          </div>
+
+          <div class="faq-item">
+            <div class="faq-header" onclick="toggleFaq(this)">
+              <span>When will my credit card be charged?</span>
+              <i class="fa-solid fa-chevron-down faq-icon"></i>
+            </div>
+            <div class="faq-body">
+              Your credit card will be charged immediately for the full amount of the booking upon clicking "Complete Secure Booking". This ensures your reservation is locked in at the secret discounted rate.
+            </div>
+          </div>
+
+          <div class="faq-item">
+            <div class="faq-header" onclick="toggleFaq(this)">
+              <span>What identification is required at check-in?</span>
+              <i class="fa-solid fa-chevron-down faq-icon"></i>
+            </div>
+            <div class="faq-body">
+              You must present a government-issued photo ID (driver's license or passport) and a physical credit card in the primary traveler's name. The hotel/car provider requires this for security deposits and incidental charges.
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Contact Form -->
+      <aside>
+        <div class="form-card" style="margin-bottom:0;">
+          <h3 style="font-size:18px; font-weight:800; border-bottom:1px solid var(--border-light); padding-bottom:12px; margin-bottom:20px; color:var(--text-dark);">
+            <i class="fa-solid fa-envelope" style="color:var(--primary-color);"></i> Send Us an Inquiry
+          </h3>
+          <form onsubmit="handleInquiry(event)">
+            <div class="form-group" style="margin-bottom:12px;">
+              <label class="form-label">Full Name</label>
+              <input type="text" class="form-control" placeholder="John Doe" required>
+            </div>
+            <div class="form-group" style="margin-bottom:12px;">
+              <label class="form-label">Email Address</label>
+              <input type="email" class="form-control" placeholder="john@example.com" required>
+            </div>
+            <div class="form-group" style="margin-bottom:12px;">
+              <label class="form-label">What do you need help with?</label>
+              <select class="form-control" style="background:var(--bg-light);" required>
+                <option value="">Select Topic</option>
+                <option value="billing">Billing & Overcharges</option>
+                <option value="cancel">Booking Cancellations</option>
+                <option value="partner">Partnering with Hotwire+</option>
+                <option value="other">Other Issues</option>
+              </select>
+            </div>
+            <div class="form-group" style="margin-bottom:20px;">
+              <label class="form-label">Details</label>
+              <textarea class="form-control" style="height:100px; resize:none;" placeholder="Please describe your problem..." required></textarea>
+            </div>
+            <button type="submit" class="btn btn-primary" style="width:100%;">Submit Case</button>
+          </form>
+        </div>
+      </aside>
+    </div>
+  </div>
+
+  <!-- Premium Footer -->
+  <footer class="premium-footer">
+    <div class="container">
+      <div class="footer-bottom">
+        <p>&copy; 2026 HOTWIRE+ Inc. All rights reserved. Premium redesign project.</p>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Chatbot Container -->
+  <div class="chatbot-container" id="chatbot-container"></div>
+
+  <script>
+    // FAQ Accordion Toggle
+    function toggleFaq(header) {
+      const item = header.closest('.faq-item');
+      const isActive = item.classList.contains('active');
+      
+      // Close all first
+      document.querySelectorAll('.faq-item').forEach(i => i.classList.remove('active'));
+      
+      if (!isActive) {
+        item.classList.add('active');
+      }
+    }
+
+    // Submit inquiry
+    function handleInquiry(e) {
+      e.preventDefault();
+      alert('Support case submitted successfully! Our support agents will email you within 24 hours.');
+      e.target.reset();
+    }
+  </script>
+  <script src="chatbot.js"></script>
+</body>
+</html>

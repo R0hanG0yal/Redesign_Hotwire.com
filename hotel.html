@@ -1,0 +1,371 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>HOTWIRE+ | Booking Details - Premium Hotel & Car Stays</title>
+  <link rel="stylesheet" href="style.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+
+  <!-- Premium Navigation Header -->
+  <header class="premium-header">
+    <div class="container nav-container">
+      <a href="index.html" class="logo" id="header-logo">
+        <div class="logo-flame">
+          <i class="fa-solid fa-fire"></i>
+        </div>
+        HOTWIRE<span class="logo-plus">+</span>
+      </a>
+      
+      <ul class="nav-menu">
+        <li><a href="index.html" class="nav-link" id="nav-link-hotels">Hotels</a></li>
+        <li><a href="index.html?tab=cars" class="nav-link" id="nav-link-cars">Cars</a></li>
+        <li><a href="results.html" class="nav-link" id="nav-link-packages">Packages</a></li>
+        <li><a href="results.html" class="nav-link" id="nav-link-decks">Decks</a></li>
+        <li><a href="results.html" class="nav-link" id="nav-link-deals">Deals</a></li>
+        <li><a href="support.html" class="nav-link" id="nav-link-support">Support</a></li>
+      </ul>
+
+      <div class="nav-actions">
+        <a href="login.html" class="btn btn-outline" id="btn-login">Log In</a>
+        <a href="login.html" class="btn btn-primary" id="btn-signup">Sign Up</a>
+      </div>
+    </div>
+  </header>
+
+  <!-- Details Header Banner -->
+  <div class="details-header">
+    <div class="container">
+      <div class="d-flex justify-content-between align-items-end flex-column-mobile">
+        <div>
+          <h1 id="detail-name" style="font-size: 36px; font-weight: 800; color: var(--text-dark); margin-bottom: 8px;">
+            Kyoto Grand Palace Resort
+          </h1>
+          <div class="d-flex align-items-center gap-12" id="detail-rating-row" style="flex-wrap: wrap; gap: 16px;">
+            <div class="stars" id="detail-stars">
+              <!-- Stars dynamically generated -->
+            </div>
+            <div class="guest-score" id="detail-guest-score">
+              <!-- Score dynamically generated -->
+            </div>
+            <span id="detail-location-pin" style="color:var(--text-muted); font-size:14px;">
+              <i class="fa-solid fa-map-pin"></i> Higashiyama District, Kyoto, Japan
+            </span>
+          </div>
+        </div>
+        <a href="#booking-options-anchor" class="btn btn-primary" id="btn-header-select">Select Option</a>
+      </div>
+
+      <!-- Image Gallery Grid -->
+      <div class="gallery-grid" id="detail-gallery">
+        <div class="gallery-item gallery-main">
+          <img id="img-main" src="https://images.unsplash.com/photo-1566073771259-6a8506099945?q=80&w=800&auto=format&fit=crop" alt="Resort main">
+        </div>
+        <div class="gallery-item">
+          <img id="img-sub1" src="https://images.unsplash.com/photo-1582719508461-905c673771fd?q=80&w=400&auto=format&fit=crop" alt="Resort room">
+        </div>
+        <div class="gallery-item">
+          <img id="img-sub2" src="https://images.unsplash.com/photo-1540555700478-4be289fbecef?q=80&w=400&auto=format&fit=crop" alt="Resort spa">
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Main Content Layout -->
+  <div class="container">
+    <div class="details-layout">
+      <!-- Left Column Details -->
+      <div class="details-main-content">
+        <!-- Description Section -->
+        <div class="detail-section">
+          <h2 class="detail-title"><i class="fa-solid fa-circle-info"></i> About the Booking</h2>
+          <p id="detail-description" style="font-size: 15px; color: var(--text-dark); line-height: 1.7; margin-bottom: 20px;">
+            Immerse yourself in traditional luxury and modern comforts. Kyoto Grand Palace Resort features beautiful Zen gardens, an indoor swimming pool, a full-service organic spa, and fine dining restaurants serving authentic Kyoto Kaiseki cuisine.
+          </p>
+          <div id="hot-rate-reveal-notice" style="display:none; background:#FFF5F5; border:1px dashed var(--primary-color); border-radius:12px; padding:20px; color:var(--text-dark);">
+            <h4 style="color:var(--primary-color); font-weight:700; margin-bottom:6px;"><i class="fa-solid fa-lock"></i> How Hot Rates Work</h4>
+            <p style="font-size:13.5px; line-height:1.6;">By keeping the name secret until after you book, we are able to secure massive discounts from top-tier brands (such as Marriott, Hyatt, Hilton, and Westin). The room type, bed count, and standard premium amenities are fully guaranteed!</p>
+          </div>
+        </div>
+
+        <!-- Amenities Section -->
+        <div class="detail-section" id="amenities-section-box">
+          <h2 class="detail-title"><i class="fa-solid fa-star"></i> Featured Amenities</h2>
+          <div class="amenities-list" id="detail-amenities-list">
+            <!-- Amenities dynamically generated -->
+          </div>
+        </div>
+
+        <!-- Selection Options Anchor -->
+        <div class="detail-section" id="booking-options-anchor">
+          <h2 class="detail-title" id="options-section-title"><i class="fa-solid fa-bed"></i> Choose Your Room</h2>
+          <div class="room-options-list" id="detail-options-list">
+            <!-- Room options dynamically generated -->
+          </div>
+        </div>
+
+        <!-- Guest Reviews (Hotels only) -->
+        <div class="detail-section" id="reviews-section-box">
+          <h2 class="detail-title"><i class="fa-solid fa-comments"></i> Guest Reviews</h2>
+          <div class="reviews-summary">
+            <span class="reviews-summary-large" id="review-summary-score">9.4</span>
+            <div>
+              <strong style="font-size:16px;">Exceptional Guest Rating</strong>
+              <p style="color:var(--text-muted); font-size:13px; margin-top:2px;">Based on 1,429 verified reviews across the web.</p>
+            </div>
+          </div>
+          <div class="review-item">
+            <div class="review-header">
+              <span class="review-author">Sarah M. (Traveler)</span>
+              <span class="review-rating">9.5</span>
+            </div>
+            <p class="review-text">Absolutely incredible property! The service was immaculate, and the locations are perfect. Highly recommend the garden view rooms.</p>
+          </div>
+          <div class="review-item">
+            <div class="review-header">
+              <span class="review-author">David K. (Business Trip)</span>
+              <span class="review-rating">9.0</span>
+            </div>
+            <p class="review-text">Extremely comfortable beds, clean spa facilities, and super fast Wi-Fi. Perfect combination of traditional aesthetics and business functionality.</p>
+          </div>
+        </div>
+      </div>
+
+      <!-- Right Column Sticky Calculator Sidecard -->
+      <aside>
+        <div class="booking-sidecard">
+          <div style="font-size: 13px; color: var(--text-muted); text-transform: uppercase; font-weight: 700; margin-bottom: 4px;">Price from</div>
+          <div class="sidecard-price" id="sidecard-base-price">$249<span style="font-size:16px; font-weight:400; color:var(--text-muted);">/night</span></div>
+          
+          <div class="sidecard-details">
+            <div class="sidecard-row">
+              <span class="sidecard-label">Check-in</span>
+              <span class="sidecard-value" id="calc-checkin">14 Oct</span>
+            </div>
+            <div class="sidecard-row">
+              <span class="sidecard-label">Check-out</span>
+              <span class="sidecard-value" id="calc-checkout">20 Oct</span>
+            </div>
+            <div class="sidecard-row">
+              <span class="sidecard-label">Nights</span>
+              <span class="sidecard-value" id="calc-nights">6</span>
+            </div>
+            <div class="sidecard-row">
+              <span class="sidecard-label">Subtotal</span>
+              <span class="sidecard-value" id="calc-subtotal">$1,494</span>
+            </div>
+            <div class="sidecard-row">
+              <span class="sidecard-label">Taxes & Fees</span>
+              <span class="sidecard-value" id="calc-taxes">$189</span>
+            </div>
+            <div class="sidecard-row" style="border-top:1px solid var(--border-light); padding-top:12px; margin-top:4px; font-size:16px; font-weight:800;">
+              <span class="sidecard-label" style="color:var(--text-dark);">Total Price</span>
+              <span class="sidecard-value" id="calc-total" style="color:var(--primary-color);">$1,683</span>
+            </div>
+          </div>
+          
+          <button class="btn btn-primary" style="width: 100%; height: 50px;" onclick="proceedToBooking()">Book Now</button>
+          <p style="font-size:11px; color:var(--text-muted); text-align:center; margin-top:12px;"><i class="fa-solid fa-lock"></i> Secure 256-bit SSL encrypted booking checkout.</p>
+        </div>
+      </aside>
+    </div>
+  </div>
+
+  <!-- Premium Footer -->
+  <footer class="premium-footer">
+    <div class="container">
+      <div class="footer-bottom">
+        <p>&copy; 2026 HOTWIRE+ Inc. All rights reserved. Premium redesign project.</p>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Chatbot Container -->
+  <div class="chatbot-container" id="chatbot-container"></div>
+
+  <script>
+    let currentItem = null;
+    let selectedOption = null;
+    let searchMode = 'hotels';
+    let nightsCount = 6;
+
+    // Load data from localStorage
+    window.addEventListener('DOMContentLoaded', () => {
+      searchMode = localStorage.getItem('search_mode') || 'hotels';
+      
+      try {
+        currentItem = JSON.parse(localStorage.getItem('selected_item'));
+      } catch(e) {
+        currentItem = null;
+      }
+
+      if (!currentItem) {
+        // Fallback to default Kyoto Hotel
+        currentItem = {
+          id: 'kyoto-grand-palace',
+          name: 'Kyoto Grand Palace Resort',
+          stars: 5,
+          rating: 9.4,
+          price: 249,
+          location: 'Kyoto, Japan',
+          neighborhood: 'Higashiyama District',
+          amenities: ['Wi-Fi', 'Pool', 'Gym', 'Spa', 'Parking', 'Restaurant'],
+          image: 'https://images.unsplash.com/photo-1566073771259-6a8506099945?q=80&w=600&auto=format&fit=crop',
+          description: 'Immerse yourself in traditional luxury and modern comforts. Kyoto Grand Palace Resort features beautiful Zen gardens, an indoor swimming pool, a full-service organic spa, and fine dining restaurants serving authentic Kyoto Kaiseki cuisine.'
+        };
+      }
+
+      // Parse Dates to calculate nights
+      const datesStr = localStorage.getItem('search_dates') || '14 Oct - 20 Oct';
+      document.getElementById('calc-checkin').textContent = datesStr.split('-')[0].trim();
+      document.getElementById('calc-checkout').textContent = datesStr.split('-')[1].trim();
+
+      // Estimate nights
+      if (datesStr.includes('6 Nights')) {
+        nightsCount = 6;
+      } else if (datesStr.includes('7 Nights')) {
+        nightsCount = 7;
+      } else {
+        nightsCount = 6; // Default
+      }
+      document.getElementById('calc-nights').textContent = nightsCount;
+
+      // Bind Details
+      const nameHeading = document.getElementById('detail-name');
+      const locationPin = document.getElementById('detail-location-pin');
+      const sidecardBase = document.getElementById('sidecard-base-price');
+      const ratingRow = document.getElementById('detail-rating-row');
+      const starsBox = document.getElementById('detail-stars');
+      const scoreBox = document.getElementById('detail-guest-score');
+      const descText = document.getElementById('detail-description');
+      const hotRateReveal = document.getElementById('hot-rate-reveal-notice');
+      const reviewSectionBox = document.getElementById('reviews-section-box');
+      const optionsTitle = document.getElementById('options-section-title');
+
+      // Check if it is Hot Rate
+      if (currentItem.isHotRate) {
+        hotRateReveal.style.display = 'block';
+        nameHeading.textContent = searchMode === 'hotels' ? '4-Star Premium Hotel (Secret Deal)' : 'Standard SUV (Secret Car Deal)';
+      } else {
+        nameHeading.textContent = currentItem.name;
+      }
+
+      descText.textContent = currentItem.description;
+      locationPin.innerHTML = `<i class="fa-solid fa-map-pin"></i> ${currentItem.neighborhood || 'Kyoto center'}, ${currentItem.location}`;
+      sidecardBase.innerHTML = `$${currentItem.price}<span style="font-size:16px; font-weight:400; color:var(--text-muted);">${searchMode === 'hotels' ? '/night' : '/day'}</span>`;
+
+      // Set Main Image
+      document.getElementById('img-main').src = currentItem.image;
+
+      // Handle Hotels vs Cars layouts
+      if (searchMode === 'hotels') {
+        reviewSectionBox.style.display = 'block';
+        optionsTitle.innerHTML = `<i class="fa-solid fa-bed"></i> Choose Your Room`;
+
+        // Render Stars
+        let starsHtml = '';
+        for (let i = 0; i < currentItem.stars; i++) {
+          starsHtml += '<i class="fa-solid fa-star"></i>';
+        }
+        starsBox.innerHTML = starsHtml;
+
+        // Render Score
+        scoreBox.innerHTML = `<span class="score-badge">${currentItem.rating}</span> <span>${currentItem.rating >= 9.0 ? 'Exceptional' : 'Excellent'} Guest Rating</span>`;
+        document.getElementById('review-summary-score').textContent = currentItem.rating;
+
+        // Render Room Options
+        const roomsList = [
+          { name: 'Standard Double Room', specs: '1 King Bed • Max 2 Guests • Free Toiletries', priceMultiplier: 1.0 },
+          { name: 'Deluxe Twin Room', specs: '2 Queen Beds • Max 4 Guests • Zen Garden View', priceMultiplier: 1.2 },
+          { name: 'Executive Garden Suite', specs: '1 King Suite • Max 4 Guests • Private Balcony & Lounge Access', priceMultiplier: 1.6 }
+        ];
+
+        renderOptionsList(roomsList);
+      } else {
+        // Cars layout
+        reviewSectionBox.style.display = 'none';
+        ratingRow.style.display = 'none';
+        optionsTitle.innerHTML = `<i class="fa-solid fa-car"></i> Choose Car Package Options`;
+
+        const carOptions = [
+          { name: 'Basic Rental Package', specs: 'AC • Automatic • Unlimited Mileage', priceMultiplier: 1.0 },
+          { name: 'Premium Rental Package', specs: 'AC • Automatic • Full Roadside Assistance • No Deductible Co-pay', priceMultiplier: 1.3 },
+          { name: 'Ultimate Travel Pack', specs: 'AC • Automatic • GPS Navigation • Unlimited Mileage • Full Insurance Cover', priceMultiplier: 1.6 }
+        ];
+
+        renderOptionsList(carOptions);
+      }
+
+      // Initial calculation
+      calculateBookingPrices(currentItem.price);
+    });
+
+    // Render option rows (rooms/car packages)
+    function renderOptionsList(options) {
+      const container = document.getElementById('detail-options-list');
+      container.innerHTML = '';
+
+      options.forEach((opt, idx) => {
+        const optionPrice = Math.round(currentItem.price * opt.priceMultiplier);
+        const cardHtml = `
+          <div class="room-card" onclick="selectOptionIndex(${idx}, ${optionPrice}, '${opt.name}')" id="opt-card-${idx}">
+            <div class="room-info">
+              <span class="room-name">${opt.name}</span>
+              <span class="room-specs">${opt.specs}</span>
+            </div>
+            <div class="room-price-book">
+              <span style="font-size: 20px; font-weight: 800; color: var(--text-dark);">$${optionPrice}<small style="font-size:12px; font-weight:400; color:var(--text-muted);">${searchMode === 'hotels' ? '/night' : '/day'}</small></span>
+              <input type="radio" name="booking-option" id="opt-radio-${idx}" ${idx === 0 ? 'checked' : ''} style="transform:scale(1.3); cursor:pointer;">
+            </div>
+          </div>
+        `;
+        container.innerHTML += cardHtml;
+      });
+
+      // Select first option by default
+      selectOptionIndex(0, currentItem.price, options[0].name);
+    }
+
+    // Set active option and recalculate costs
+    function selectOptionIndex(idx, price, name) {
+      // Uncheck all classes
+      document.querySelectorAll('.room-card').forEach(card => card.style.borderColor = 'var(--border-light)');
+      
+      const selectedCard = document.getElementById(`opt-card-${idx}`);
+      const selectedRadio = document.getElementById(`opt-radio-${idx}`);
+      if (selectedCard) selectedCard.style.borderColor = 'var(--primary-color)';
+      if (selectedRadio) selectedRadio.checked = true;
+
+      selectedOption = { name: name, price: price };
+      calculateBookingPrices(price);
+    }
+
+    // Calculate dynamic tax and subtotal
+    function calculateBookingPrices(price) {
+      const subtotal = price * nightsCount;
+      const taxes = Math.round(subtotal * 0.125); // 12.5% Tax
+      const total = subtotal + taxes;
+
+      document.getElementById('sidecard-base-price').innerHTML = `$${price}<span style="font-size:16px; font-weight:400; color:var(--text-muted);">${searchMode === 'hotels' ? '/night' : '/day'}</span>`;
+      document.getElementById('calc-subtotal').textContent = `$${subtotal.toLocaleString()}`;
+      document.getElementById('calc-taxes').textContent = `$${taxes.toLocaleString()}`;
+      document.getElementById('calc-total').textContent = `$${total.toLocaleString()}`;
+
+      // Save choices
+      localStorage.setItem('booking_subtotal', subtotal);
+      localStorage.setItem('booking_taxes', taxes);
+      localStorage.setItem('booking_total', total);
+      localStorage.setItem('booking_unit_price', price);
+    }
+
+    // Proceed to Booking details checkout
+    function proceedToBooking() {
+      localStorage.setItem('booking_option_name', selectedOption.name);
+      window.location.href = 'booking.html';
+    }
+  </script>
+  <script src="chatbot.js"></script>
+</body>
+</html>

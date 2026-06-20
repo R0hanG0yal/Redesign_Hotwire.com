@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>HOTWIRE+ | Support Chatbot Assistant</title>
+  <link rel="stylesheet" href="style.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body style="background: var(--bg-dark-radial); min-height: 100vh; display: flex; align-items: center; justify-content: center; flex-direction: column; color: white; padding: 24px; text-align: center;">
+
+  <div style="max-width: 500px; margin-bottom: 24px;">
+    <a href="index.html" class="logo" style="display:inline-flex; justify-content:center; margin-bottom:16px;">
+      <div class="logo-flame">
+        <i class="fa-solid fa-fire"></i>
+      </div>
+      HOTWIRE<span class="logo-plus">+</span>
+    </a>
+    <h2 style="font-size:28px; font-weight:800; margin-bottom:8px;">Chatbot Playground</h2>
+    <p style="color:var(--text-muted-dark); font-size:15px; line-height:1.5;">Welcome to the support chatbot tester. Click the red chat bubble in the bottom right corner of the screen to open the interactive assistant and test its automated replies.</p>
+  </div>
+
+  <div style="margin-top: 20px;">
+    <a href="index.html" class="btn btn-primary" style="margin-right:12px;">Go to Homepage</a>
+    <a href="support.html" class="btn btn-outline-white">Go to Help Center</a>
+  </div>
+
+  <!-- Chatbot Container Widget -->
+  <div class="chatbot-container" id="chatbot-container"></div>
+
+  <!-- JS Scripts -->
+  <script src="chatbot.js"></script>
+  <script>
+    // Automatically open the chatbot window on load in this playground
+    window.addEventListener('DOMContentLoaded', () => {
+      setTimeout(() => {
+        toggleChatbot();
+      }, 500);
+    });
+  </script>
+</body>
+</html>

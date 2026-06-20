@@ -1,0 +1,544 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>HOTWIRE+ | Search Results - Book Premium Stays & Rides</title>
+  <link rel="stylesheet" href="style.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+
+  <!-- Premium Navigation Header -->
+  <header class="premium-header">
+    <div class="container nav-container">
+      <a href="index.html" class="logo" id="header-logo">
+        <div class="logo-flame">
+          <i class="fa-solid fa-fire"></i>
+        </div>
+        HOTWIRE<span class="logo-plus">+</span>
+      </a>
+      
+      <ul class="nav-menu">
+        <li><a href="index.html" class="nav-link" id="nav-link-hotels">Hotels</a></li>
+        <li><a href="index.html?tab=cars" class="nav-link" id="nav-link-cars">Cars</a></li>
+        <li><a href="results.html" class="nav-link active" id="nav-link-packages">Packages</a></li>
+        <li><a href="results.html" class="nav-link" id="nav-link-decks">Decks</a></li>
+        <li><a href="results.html" class="nav-link" id="nav-link-deals">Deals</a></li>
+        <li><a href="support.html" class="nav-link" id="nav-link-support">Support</a></li>
+      </ul>
+
+      <div class="nav-actions">
+        <a href="login.html" class="btn btn-outline" id="btn-login">Log In</a>
+        <a href="login.html" class="btn btn-primary" id="btn-signup">Sign Up</a>
+      </div>
+    </div>
+  </header>
+
+  <!-- Results Page Container -->
+  <main class="results-page">
+    <div class="container">
+      <!-- Search Summary Bar -->
+      <div class="search-summary-bar">
+        <div class="summary-details">
+          <div class="summary-item">
+            <span class="summary-label">Destination</span>
+            <span class="summary-val" id="summary-location">Kyoto, Japan</span>
+          </div>
+          <div class="summary-item">
+            <span class="summary-label">Dates</span>
+            <span class="summary-val" id="summary-dates">14 Oct - 20 Oct</span>
+          </div>
+          <div class="summary-item" id="summary-guests-box">
+            <span class="summary-label">Guests</span>
+            <span class="summary-val" id="summary-guests">1 Room, 2 Adults, 0 Children</span>
+          </div>
+        </div>
+        <a href="index.html" class="btn btn-outline btn-sm"><i class="fa-solid fa-pen"></i> Edit Search</a>
+      </div>
+
+      <!-- Results Layout -->
+      <div class="results-layout">
+        <!-- Sidebar Filters -->
+        <aside class="filters-sidebar">
+          <div class="filter-section">
+            <h3 class="filter-title">Filter by Price</h3>
+            <div class="price-range-inputs">
+              <input type="number" id="price-min" class="price-input" placeholder="Min" min="0" oninput="filterResults()">
+              <span style="color:var(--text-muted);">to</span>
+              <input type="number" id="price-max" class="price-input" placeholder="Max" min="0" oninput="filterResults()">
+            </div>
+          </div>
+
+          <div class="filter-section" id="star-filter-section">
+            <h3 class="filter-title">Star Rating</h3>
+            <div class="checkbox-group">
+              <label class="checkbox-container">
+                5 Stars
+                <input type="checkbox" class="star-checkbox" value="5" onchange="filterResults()">
+                <span class="checkmark"></span>
+              </label>
+              <label class="checkbox-container">
+                4 Stars
+                <input type="checkbox" class="star-checkbox" value="4" onchange="filterResults()">
+                <span class="checkmark"></span>
+              </label>
+              <label class="checkbox-container">
+                3 Stars
+                <input type="checkbox" class="star-checkbox" value="3" onchange="filterResults()">
+                <span class="checkmark"></span>
+              </label>
+            </div>
+          </div>
+
+          <div class="filter-section" id="amenity-filter-section">
+            <h3 class="filter-title">Amenities</h3>
+            <div class="checkbox-group">
+              <label class="checkbox-container">
+                Free Wi-Fi
+                <input type="checkbox" class="amenity-checkbox" value="Wi-Fi" onchange="filterResults()">
+                <span class="checkmark"></span>
+              </label>
+              <label class="checkbox-container">
+                Swimming Pool
+                <input type="checkbox" class="amenity-checkbox" value="Pool" onchange="filterResults()">
+                <span class="checkmark"></span>
+              </label>
+              <label class="checkbox-container">
+                Fitness Center
+                <input type="checkbox" class="amenity-checkbox" value="Gym" onchange="filterResults()">
+                <span class="checkmark"></span>
+              </label>
+              <label class="checkbox-container">
+                Spa
+                <input type="checkbox" class="amenity-checkbox" value="Spa" onchange="filterResults()">
+                <span class="checkmark"></span>
+              </label>
+              <label class="checkbox-container">
+                Free Parking
+                <input type="checkbox" class="amenity-checkbox" value="Parking" onchange="filterResults()">
+                <span class="checkmark"></span>
+              </label>
+            </div>
+          </div>
+        </aside>
+
+        <!-- Main Results Area -->
+        <section>
+          <div class="d-flex justify-content-between align-items-center" style="margin-bottom: 20px;">
+            <h2 style="font-size: 24px; font-weight: 800;" id="results-count-title">Available Stays</h2>
+            <select class="form-control" style="width: auto; padding: 8px 16px;" id="sort-select" onchange="sortResults()">
+              <option value="recommended">Sort by: Recommended</option>
+              <option value="price-low">Price: Low to High</option>
+              <option value="price-high">Price: High to Low</option>
+              <option value="rating">Guest Rating</option>
+            </select>
+          </div>
+
+          <div class="hotel-list" id="results-list">
+            <!-- Results dynamically loaded here -->
+          </div>
+        </section>
+      </div>
+    </div>
+  </main>
+
+  <!-- Premium Footer -->
+  <footer class="premium-footer">
+    <div class="container">
+      <div class="footer-grid">
+        <div class="footer-brand">
+          <a href="index.html" class="logo footer-logo">
+            <div class="logo-flame">
+              <i class="fa-solid fa-fire"></i>
+            </div>
+            HOTWIRE<span class="logo-plus">+</span>
+          </a>
+          <p class="footer-tagline">Experience premium travel bookings with unpublished rates and deep discounts on luxury stays and rides worldwide.</p>
+        </div>
+        
+        <div>
+          <h5 class="footer-col-title">Company</h5>
+          <ul class="footer-links">
+            <li><a href="#" class="footer-link">Hotwire Company</a></li>
+            <li><a href="#" class="footer-link">Careers</a></li>
+            <li><a href="#" class="footer-link">Press Center</a></li>
+            <li><a href="#" class="footer-link">Investor Relations</a></li>
+          </ul>
+        </div>
+
+        <div>
+          <h5 class="footer-col-title">Support</h5>
+          <ul class="footer-links">
+            <li><a href="support.html" class="footer-link">Contact Us</a></li>
+            <li><a href="support.html" class="footer-link">Help Center</a></li>
+            <li><a href="support.html" class="footer-link">Refund Policies</a></li>
+            <li><a href="support.html" class="footer-link">Site Map</a></li>
+          </ul>
+        </div>
+
+        <div>
+          <h5 class="footer-col-title">Social</h5>
+          <ul class="footer-links">
+            <li><a href="#" class="footer-link"><i class="fa-brands fa-facebook" style="margin-right: 8px;"></i>Hotwire+</a></li>
+            <li><a href="#" class="footer-link"><i class="fa-brands fa-instagram" style="margin-right: 8px;"></i>@hotwireplus</a></li>
+            <li><a href="#" class="footer-link"><i class="fa-brands fa-twitter" style="margin-right: 8px;"></i>@hotwireplus</a></li>
+          </ul>
+        </div>
+
+        <div>
+          <h5 class="footer-col-title">Legal</h5>
+          <ul class="footer-links">
+            <li><a href="#" class="footer-link">Privacy Policy</a></li>
+            <li><a href="#" class="footer-link">Terms of Use</a></li>
+            <li><a href="#" class="footer-link">Rules & Restrictions</a></li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="footer-bottom">
+        <p>&copy; 2026 HOTWIRE+ Inc. All rights reserved. Premium redesign project.</p>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Chatbot Container -->
+  <div class="chatbot-container" id="chatbot-container"></div>
+
+  <script>
+    // Mock Database
+    const hotelDatabase = [
+      {
+        id: 'hot-rate-hotel',
+        name: '4-Star Premium Hotel (Secret Deal)',
+        isHotRate: true,
+        stars: 4,
+        rating: 8.8,
+        price: 89,
+        originalPrice: 199,
+        location: 'Kyoto, Japan',
+        neighborhood: 'Kyoto Downtown',
+        amenities: ['Wi-Fi', 'Pool', 'Gym', 'Breakfast'],
+        image: 'https://images.unsplash.com/photo-1540541338287-41700207dee6?q=80&w=600&auto=format&fit=crop',
+        description: 'This premium 4-star hotel sits in the absolute center of Kyoto. You are steps away from major temples, historic streets, and fabulous dining. The hotel is highly rated for cleanliness, guest service, and luxury bedding. Standard Hotwire policies apply: the exact name of the hotel is revealed immediately after confirmation.'
+      },
+      {
+        id: 'kyoto-grand-palace',
+        name: 'Kyoto Grand Palace Resort',
+        stars: 5,
+        rating: 9.4,
+        price: 249,
+        location: 'Kyoto, Japan',
+        neighborhood: 'Higashiyama District',
+        amenities: ['Wi-Fi', 'Pool', 'Gym', 'Spa', 'Parking', 'Restaurant'],
+        image: 'https://images.unsplash.com/photo-1566073771259-6a8506099945?q=80&w=600&auto=format&fit=crop',
+        description: 'Immerse yourself in traditional luxury and modern comforts. Kyoto Grand Palace Resort features beautiful Zen gardens, an indoor swimming pool, a full-service organic spa, and fine dining restaurants serving authentic Kyoto Kaiseki cuisine.'
+      },
+      {
+        id: 'sanjyo-boutique',
+        name: 'Sanjyo Boutique Retreat',
+        stars: 4,
+        rating: 8.9,
+        price: 139,
+        location: 'Kyoto, Japan',
+        neighborhood: 'Sanjyo-dori',
+        amenities: ['Wi-Fi', 'Restaurant', 'Parking'],
+        image: 'https://images.unsplash.com/photo-1520250497591-112f2f40a3f4?q=80&w=600&auto=format&fit=crop',
+        description: 'A charming, design-focused hotel located along the historic Sanjyo-dori shopping street. Perfectly blends industrial design aesthetics with Japanese minimalist architecture.'
+      },
+      {
+        id: 'kiyomizu-vista',
+        name: 'Kiyomizu Vista Hotel',
+        stars: 4,
+        rating: 8.6,
+        price: 119,
+        location: 'Kyoto, Japan',
+        neighborhood: 'Kiyomizu Temple Area',
+        amenities: ['Wi-Fi', 'Gym', 'Spa'],
+        image: 'https://images.unsplash.com/photo-1551882547-ff40c63fe5fa?q=80&w=600&auto=format&fit=crop',
+        description: 'Located high up in the historic hills, offering stunning views of Kyoto city and quick walking access to the iconic Kiyomizu-dera Pagoda.'
+      },
+      {
+        id: 'bamboo-grove-inn',
+        name: 'The Bamboo Grove Inn',
+        stars: 3,
+        rating: 8.1,
+        price: 79,
+        location: 'Kyoto, Japan',
+        neighborhood: 'Arashiyama',
+        amenities: ['Wi-Fi', 'Parking'],
+        image: 'https://images.unsplash.com/photo-1498503182468-3b51cbb6cb24?q=80&w=600&auto=format&fit=crop',
+        description: 'A cozy, traditional-style guesthouse nestled in the bamboo-laden hills of Arashiyama. Peaceful atmosphere, budget-friendly comfort, and delicious home-cooked breakfasts.'
+      }
+    ];
+
+    const carDatabase = [
+      {
+        id: 'hot-rate-car',
+        name: 'Standard SUV (Secret Car Deal)',
+        isHotRate: true,
+        type: 'SUV',
+        supplier: 'Top-tier Supplier',
+        price: 34,
+        originalPrice: 75,
+        location: 'Kyoto, Japan',
+        amenities: ['Automatic', 'AC', 'Unlimited Mileage'],
+        image: 'https://images.unsplash.com/photo-1533473359331-0135ef1b58bf?q=80&w=600&auto=format&fit=crop',
+        description: 'Unbeatable rates on standard SUVs. You will receive a clean, late-model vehicle from an agency like Hertz, Avis, or Enterprise. The exact brand is revealed immediately after checkout.'
+      },
+      {
+        id: 'toyota-rav4',
+        name: 'Toyota RAV4 or similar (Midsize SUV)',
+        type: 'SUV',
+        supplier: 'Toyota Rent-A-Car',
+        price: 52,
+        location: 'Kyoto, Japan',
+        amenities: ['Automatic', 'AC', 'GPS Navigation Included', 'Hybrid'],
+        image: 'https://images.unsplash.com/photo-1621007947382-bb3c3994e3fb?q=80&w=600&auto=format&fit=crop',
+        description: 'Perfect for group touring or mountainous terrain. Rent the reliable Toyota RAV4 hybrid, offering spacious seating and massive fuel efficiency for day trips.'
+      },
+      {
+        id: 'tesla-3-luxury',
+        name: 'Tesla Model 3 (Luxury EV)',
+        type: 'Luxury',
+        supplier: 'Enterprise',
+        price: 99,
+        location: 'Kyoto, Japan',
+        amenities: ['Autopilot Ready', 'Free Charging network', 'Bluetooth', 'Leather Seats'],
+        image: 'https://images.unsplash.com/photo-1617788138017-80ad40651399?q=80&w=600&auto=format&fit=crop',
+        description: 'Drive in absolute style and silent comfort. Includes access to all regional fast charging networks. Autopilot capabilities enabled.'
+      },
+      {
+        id: 'toyota-prius',
+        name: 'Toyota Prius (Hybrid Sedan)',
+        type: 'Sedan',
+        supplier: 'Nippon Rent-A-Car',
+        price: 42,
+        location: 'Kyoto, Japan',
+        amenities: ['Automatic', 'AC', 'Backup Camera'],
+        image: 'https://images.unsplash.com/photo-1549399542-7e3f8b79c341?q=80&w=600&auto=format&fit=crop',
+        description: 'The classic hybrid rental. Highly reliable, exceptionally fuel efficient, and extremely easy to park in compact Kyoto alleys.'
+      }
+    ];
+
+    let currentList = [];
+    let searchMode = 'hotels';
+
+    // Initialize Page
+    window.addEventListener('DOMContentLoaded', () => {
+      // Get parameters
+      const loc = localStorage.getItem('search_location') || 'Kyoto, Japan';
+      const dates = localStorage.getItem('search_dates') || '14 Oct - 20 Oct';
+      const guests = localStorage.getItem('search_guests') || '1 Room, 2 Adults, 0 Children';
+      searchMode = localStorage.getItem('search_mode') || 'hotels';
+
+      // Update UI Header / Links
+      document.getElementById('summary-location').textContent = loc;
+      document.getElementById('summary-dates').textContent = dates;
+      
+      const guestsBox = document.getElementById('summary-guests-box');
+      if (searchMode === 'hotels') {
+        document.getElementById('summary-guests').textContent = guests;
+        document.getElementById('results-count-title').textContent = `Hotel stays in ${loc.split(',')[0]}`;
+        currentList = [...hotelDatabase];
+      } else {
+        guestsBox.style.display = 'none';
+        document.getElementById('results-count-title').textContent = `Car rentals in ${loc.split(',')[0]}`;
+        
+        // Hide hotel-specific sidebar sections
+        document.getElementById('star-filter-section').style.display = 'none';
+        
+        // Rewrite amenity filters for cars
+        document.getElementById('amenity-filter-section').innerHTML = `
+          <h3 class="filter-title">Car Type</h3>
+          <div class="checkbox-group">
+            <label class="checkbox-container">
+              SUV
+              <input type="checkbox" class="car-type-checkbox" value="SUV" onchange="filterResults()">
+              <span class="checkmark"></span>
+            </label>
+            <label class="checkbox-container">
+              Sedan
+              <input type="checkbox" class="car-type-checkbox" value="Sedan" onchange="filterResults()">
+              <span class="checkmark"></span>
+            </label>
+            <label class="checkbox-container">
+              Luxury / EV
+              <input type="checkbox" class="car-type-checkbox" value="Luxury" onchange="filterResults()">
+              <span class="checkmark"></span>
+            </label>
+          </div>
+        `;
+        currentList = [...carDatabase];
+      }
+
+      renderList(currentList);
+    });
+
+    // Render list elements
+    function renderList(list) {
+      const container = document.getElementById('results-list');
+      container.innerHTML = '';
+
+      if (list.length === 0) {
+        container.innerHTML = `
+          <div class="text-center" style="padding:60px 20px; background:white; border-radius:12px; border:1px solid var(--border-light);">
+            <i class="fa-regular fa-folder-open" style="font-size:48px; color:var(--text-muted); margin-bottom:16px;"></i>
+            <h3>No results match your filters</h3>
+            <p style="color:var(--text-muted); margin-top:8px;">Try clearing some checkboxes or expanding your price range.</p>
+          </div>
+        `;
+        return;
+      }
+
+      list.forEach(item => {
+        let amenitiesHtml = '';
+        item.amenities.slice(0, 4).forEach(amenity => {
+          let icon = 'fa-check';
+          if (amenity === 'Wi-Fi') icon = 'fa-wifi';
+          if (amenity === 'Pool') icon = 'fa-person-swimming';
+          if (amenity === 'Gym') icon = 'fa-dumbbell';
+          if (amenity === 'Spa') icon = 'fa-spa';
+          if (amenity === 'Parking') icon = 'fa-square-parking';
+          if (amenity === 'Restaurant') icon = 'fa-utensils';
+          if (amenity === 'Automatic') icon = 'fa-gear';
+          if (amenity === 'AC') icon = 'fa-wind';
+          
+          amenitiesHtml += `<span class="amenity-tag"><i class="fa-solid ${icon}"></i> ${amenity}</span>`;
+        });
+
+        const cardClass = item.isHotRate ? 'hot-rate-card' : 'hotel-card';
+        const badgeHtml = item.isHotRate 
+          ? `<span class="hot-rate-badge"><i class="fa-solid fa-bolt"></i> HOT RATE DEAL</span>` 
+          : '';
+
+        let detailsHtml = '';
+        if (searchMode === 'hotels') {
+          let starsHtml = '';
+          for (let i = 0; i < item.stars; i++) {
+            starsHtml += '<i class="fa-solid fa-star"></i>';
+          }
+          detailsHtml = `
+            <div class="hotel-rating-row">
+              <div class="stars">${starsHtml}</div>
+              <div class="guest-score">
+                <span class="score-badge">${item.rating}</span>
+                <span>${item.rating >= 9.0 ? 'Exceptional' : 'Excellent'} Guest Rating</span>
+              </div>
+            </div>
+            <p style="font-size:13px; color:var(--text-muted); margin-bottom:12px;">
+              <i class="fa-solid fa-map-pin"></i> ${item.neighborhood}
+            </p>
+          `;
+        } else {
+          detailsHtml = `
+            <p style="font-size:14px; font-weight: 600; color:var(--primary-color); margin-bottom:12px;">
+              <i class="fa-solid fa-handshake"></i> Supplier: ${item.supplier}
+            </p>
+          `;
+        }
+
+        const priceClass = item.isHotRate ? 'current-price hot-rate-price' : 'current-price';
+        const priceBoxHtml = `
+          <div class="hotel-price-box">
+            ${item.isHotRate ? `<p class="original-price">$${item.originalPrice}</p>` : ''}
+            <p class="${priceClass}">$${item.price}</p>
+            <p class="price-sub">per night (excl. taxes)</p>
+            <button class="btn btn-primary" onclick="selectItem('${item.id}')">Explore Deal</button>
+          </div>
+        `;
+
+        const nameLabel = item.isHotRate && searchMode === 'hotels' ? 'Secret Hotel Deal' : item.name;
+
+        const itemHtml = `
+          <div class="${cardClass}">
+            ${badgeHtml}
+            <img src="${item.image}" alt="${item.name}" class="hotel-card-img">
+            <div class="hotel-card-body">
+              <div class="hotel-info-top">
+                <div>
+                  <h3 class="hotel-name">${nameLabel}</h3>
+                  ${detailsHtml}
+                  <div class="hotel-amenities">
+                    ${amenitiesHtml}
+                  </div>
+                </div>
+              </div>
+            </div>
+            ${priceBoxHtml}
+          </div>
+        `;
+        
+        container.innerHTML += itemHtml;
+      });
+    }
+
+    // Interactive Filters logic
+    function filterResults() {
+      let filtered = searchMode === 'hotels' ? [...hotelDatabase] : [...carDatabase];
+
+      // Price filter
+      const minPrice = parseFloat(document.getElementById('price-min').value) || 0;
+      const maxPrice = parseFloat(document.getElementById('price-max').value) || 9999;
+      filtered = filtered.filter(item => item.price >= minPrice && item.price <= maxPrice);
+
+      // Star rating filter (hotels only)
+      if (searchMode === 'hotels') {
+        const starBoxes = document.querySelectorAll('.star-checkbox:checked');
+        if (starBoxes.length > 0) {
+          const checkedStars = Array.from(starBoxes).map(cb => parseInt(cb.value));
+          filtered = filtered.filter(item => checkedStars.includes(item.stars));
+        }
+
+        // Amenities filter
+        const amenityBoxes = document.querySelectorAll('.amenity-checkbox:checked');
+        if (amenityBoxes.length > 0) {
+          const checkedAmenities = Array.from(amenityBoxes).map(cb => cb.value);
+          filtered = filtered.filter(item => {
+            return checkedAmenities.every(amenity => item.amenities.includes(amenity));
+          });
+        }
+      } else {
+        // Car type filter
+        const carBoxes = document.querySelectorAll('.car-type-checkbox:checked');
+        if (carBoxes.length > 0) {
+          const checkedTypes = Array.from(carBoxes).map(cb => cb.value);
+          filtered = filtered.filter(item => checkedTypes.includes(item.type));
+        }
+      }
+
+      renderList(filtered);
+    }
+
+    // Sorting logic
+    function sortResults() {
+      const criteria = document.getElementById('sort-select').value;
+      let listToRender = searchMode === 'hotels' ? [...hotelDatabase] : [...carDatabase];
+
+      if (criteria === 'price-low') {
+        listToRender.sort((a, b) => a.price - b.price);
+      } else if (criteria === 'price-high') {
+        listToRender.sort((a, b) => b.price - a.price);
+      } else if (criteria === 'rating') {
+        listToRender.sort((a, b) => (b.rating || 0) - (a.rating || 0));
+      } else {
+        // Recommended (Hot Rate first)
+        listToRender.sort((a, b) => (b.isHotRate ? 1 : 0) - (a.isHotRate ? 1 : 0));
+      }
+
+      renderList(listToRender);
+    }
+
+    // Select Item and proceed
+    function selectItem(id) {
+      const item = searchMode === 'hotels' 
+        ? hotelDatabase.find(h => h.id === id) 
+        : carDatabase.find(c => c.id === id);
+      
+      localStorage.setItem('selected_item', JSON.stringify(item));
+      window.location.href = 'hotel.html';
+    }
+  </script>
+  <script src="chatbot.js"></script>
+</body>
+</html>
